@@ -62,7 +62,6 @@ class MES(BO):
 
         return mid
 
-    # ガンベル分布をcdfで近似する
     def approx_gumbel_by_cdf(self, y):
         return np.prod(norm.cdf((y - np.c_[self.represent_mean]) / np.c_[self.represent_std]), axis=0)
 
@@ -77,7 +76,6 @@ class MES(BO):
             R = self.approx_gumbel_by_cdf(Y)
             Y = np.ravel(Y)
 
-            # r = 0.25, 0.5, 0.75となるyを探索
             y1 = self.find_r(0.25, R, Y, 0.01)
             med = self.find_r(0.5, R, Y, 0.01)
             y2 = self.find_r(0.75, R, Y, 0.01)
@@ -87,11 +85,9 @@ class MES(BO):
 
             max_samples = np.array(np.random.gumbel(a, b, self.n_sampling))
 
-            # 観測最大点よりも小さいサンプル点は観測最大点に補正しておく
             max_samples[max_samples < left + 5 * np.sqrt(self.gp_model.noise_var)] = left + 5 * np.sqrt(self.gp_model.noise_var)
 
         else:
-            # 最大値は観測最大の値より大きいため逆が成り立つ場合は最大値にノイズを乗せたものを返すようにする
             max_samples = (left + 5 * np.sqrt(self.gp_model.noise_var)) * np.ones(self.n_sampling)
 
         return max_samples
