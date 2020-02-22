@@ -21,6 +21,10 @@ class MES(BO):
         self.max_samples = self.sampling_gumbel()
 
     def acquire(self, x):
+        if x in self.gp_model.X:
+            # print('x is already acquired')
+            return 0
+
         x = x.reshape(-1, self.f.dim)
         pred_mean, pred_var =  self.gp_model.predict(x)
         pred_std = np.sqrt(pred_var)

@@ -6,6 +6,23 @@ Bayesian Optimization (BO) tools.
 
 ## Implement
 
-- Native BO
+- `bo/`
 
-- Preferential BO
+  - Bayesian Optimization Core
+  - Acquisition Functions
+
+- `gp/`
+
+  - Gaussian Process Core
+
+- `kernel/`
+
+  - Gaussian Process Kernels
+
+- `plot/`
+
+  - Plot Utils
+
+- `save/`
+
+  - Save Data (regret, time, ...etc)
