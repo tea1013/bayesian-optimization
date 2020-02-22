@@ -1,8 +1,8 @@
 import numpy as np
-import functions.function as function
+from .function import Function
 from scipydirect import minimize
 
-class SixHumpCamel(function.Function):
+class SixHumpCamel(Function):
 
     def __init__(self):
         self.dim =2

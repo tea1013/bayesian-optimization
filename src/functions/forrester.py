@@ -1,8 +1,8 @@
 import numpy as np
-import functions.function as function
+from .function import Function
 from scipydirect import minimize
 
-class Forrester(function.Function):
+class Forrester(Function):
 
     def __init__(self):
         self.dim = 1

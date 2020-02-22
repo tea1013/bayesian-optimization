@@ -1,8 +1,8 @@
 import numpy as np
-import functions.function as function
+from .function import Function
 from scipydirect import minimize
 
-class Sphere1d(function.Function):
+class Sphere1d(Function):
 
     def __init__(self):
         self.dim = 1
